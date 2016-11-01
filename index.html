@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1"> -->
+
+    <meta name="viewport" content="width=device-width,  initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebarC.css" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+	
+		
+	
+	
+
+
+
+
+    <style>
+        #bodyClick {
+          height: 100%;
+          width: 100%;
+          opacity: 0;
+          content: "";
+          z-index: 2000;
+          overflow-x: hidden;
+        }
+
+        /*navbar*/
+
+        .nb-side { top:0;
+        	margin: 0;
+        	z-index: 3;
+        	position: fixed;width: 100%;
+
+   			background-color: white;
+		    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+        }
+          
+        button#menu-toggle {
+        	background-color: transparent;	
+        	border: 0px solid transparent; 	
+			width: 40px;
+            height: 40px; 
+            outline:0px;
+            /*margin-right: auto;           */
+            /*margin-left: auto;*/
+         }
+
+		.navbar-transparent {
+    		padding-top: 15px;
+    		background-color: transparent;
+    		border-bottom: 1px solid transparent;
+		}
+
+	
+		/*button#menu-toggle {}*/
+
+        #menu-toggle .icon-bar {
+          display: block;
+          position: relative;
+          width: 24px;
+          height: 2px;
+          border-radius: 1px;
+          background: black; 
+        }
+
+        #menu-toggle .bar1,#menu-toggle .bar2,#menu-toggle .bar3 {
+            outline: 1px solid transparent;}
+        #menu-toggle .bar1 {top: 0px; }    
+        #menu-toggle .bar3 {bottom: 0px;}  
+        #menu-toggle .icon-bar + .icon-bar {margin-top:4px;}
+
+
+		.sidebar-nav li {float:none;white-space: nowrap;
+ 			overflow: hidden;
+ 			text-overflow: clip; 
+			width:100%;	
+			
+ 		}	
+
+		.sidebar-nav   {width:100%;z-index: 2001;}
+
+		/*parallax*/
+		header{padding: 0;margin: 0;  }	
+
+		header .parallax  {
+		  width: 100%;
+		  height: 100vh;
+		  overflow: hidden;
+		  display: block;
+		}
+
+		header .parallax > img {
+		  min-width: 100%;
+		  min-height: 100%;
+		  width: auto;
+		  height: auto;
+		  position: relative;
+		  z-index: 1;
+		}
+
+
+		.parallax .container-fluid {
+		    z-index: 2;
+		    position: absolute;
+		    width: 100%;		    
+		    height: 100vh;
+		    display: block;
+		    top: 0;
+		    color: black;
+		}
+
+		.parallax .content {
+			position: absolute; 
+			width:100%;
+			top: 45%;
+			
+			 }
+
+
+		a.scroll-arrow {
+		    font-size: 35px;
+		    color: white;
+		    width: 50px;
+		    line-height: 52px;
+		    border-radius: 50%;
+		    height: 50px;
+		    border: 1px solid black;
+		    display: block;
+		    margin: 0 auto;
+			border-style: solid;
+			border-width: 0.2rem;
+			border-color: white;
+
+		    position: absolute;		    
+		    bottom: 20px;
+		    left: 50%;
+		    
+
+		    z-index: 3;
+
+
+		    -webkit-transform: translateX(-50%);
+		    -moz-transform: translateX(-50%);
+		    -ms-transform: translateX(-50%);
+		    -o-transform: translateX(-50%);
+		    transform: translateX(-80%);
+		    opacity: 0.7;
+		}	 
+		
+		/*separator*/
+		.separator-container .separator.line-separator:after { float: right; }
+		.separator-container .separator.line-separator:before {    float: left; }
+
+		.separator-container {text-align: center;position: relative;}
+		.separator-container .separator {color: #c5a47e;margin: 0 auto 1em;width: 11em;}
+		.separator-container .separator.line-separator:before, 
+		.separator-container .separator.line-separator:after {
+    		display: block;     width: 40%;     content: " ";
+    		margin-top: 14px;     border: 1px solid #c5a47e; }
+
+
+		.sec_content{margin:3rem 1rem 1rem 1rem;border-bottom: 1px solid gray;}
+
+
+	/*----------- Map container ----------- */
+
+		.map,.map1 {	
+		  position: relative;
+		  width: 100%;
+		  top: 0;
+		  left: 0;
+		  height: 570px;
+		  overflow: hidden;
+		  display: block;
+		}
+		/*.section-contact-3 .contact-container .map .big-map {*/
+		.map .big-map,.map1 .big-map {	
+		  height: 100%;
+		  width: 100%;
+		  display: block;
+		}
+
+
+		.card {   margin-bottom: 30px; }
+		.card.add-animation {
+		    opacity: 0;
+		    -webkit-transition: all 0.7s ease-out 0.6s;
+		    -moz-transition: all 0.7s ease-out 0.6s;
+		    -o-transition: all 0.7s ease-out 0.6s;
+		    -ms-transition: all 0.7s ease-out 0.6s;
+		    transition: all 0.7s ease-out 0.6s;
+		  }
+
+		  .card.add-animation.animation-1 {
+		    -webkit-transition: all 0.7s ease-out 0.1s;
+		    -moz-transition: all 0.7s ease-out 0.1s;
+		    -o-transition: all 0.7s ease-out 0.1s;
+		    -ms-transition: all 0.7s ease-out 0.1s;
+		    transition: all 0.7s ease-out 0.1s;
+		  }
+
+		  .card.add-animation.animation-2 {
+		    -webkit-transition: all 0.7s ease-out 0.3s;
+		    -moz-transition: all 0.7s ease-out 0.3s;
+		    -o-transition: all 0.7s ease-out 0.3s;
+		    -ms-transition: all 0.7s ease-out 0.3s;
+		    transition: all 0.7s ease-out 0.3s;
+		  }
+
+		  .card.add-animation.animation-3 {
+		    -webkit-transition: all 0.7s ease-out 0.6s;
+		    -moz-transition: all 0.7s ease-out 0.6s;
+		    -o-transition: all 0.7s ease-out 0.6s;
+		    -ms-transition: all 0.7s ease-out 0.6s;
+		    transition: all 0.7s ease-out 0.6s;
+		  }
+
+		  .card.add-animation.animation-4 {
+		    -webkit-transition: all 0.7s ease-out 0.9s;
+		    -moz-transition: all 0.7s ease-out 0.9s;
+		    -o-transition: all 0.7s ease-out 0.9s;
+		    -ms-transition: all 0.7s ease-out 0.9s;
+		    transition: all 0.7s ease-out 0.9s;
+		  }
+
+		.card.add-animation.animate{ opacity: 1; }
+		 #perf1,#perf2 {margin:1rem 0 1rem 0 ; }
+
+		.youtube {
+		   /* background-position: center;
+		    background-repeat: no-repeat;
+		    position: relative;
+		    display: inline-block;
+		    overflow: hidden;
+		    transition: all 200ms ease-out;
+		    cursor: pointer;*/
+		}
+
+/*		.youtube .play {
+		    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAERklEQVR4nOWbTWhcVRTHb1IJVoxGtNCNdal2JYJReC6GWuO83PM/59yUS3FRFARdFlwYP1CfiojQWt36sRCUurRIdVFXIn41lAoVdRGrG1M01YpKrWjiYmaSl8ybZJL3cd+YA//NLObd3++eO8x79z5jSq5Gw+8kov0AP8vMR5l1BtBZQM4B8ks75wCdZdYZZj5qLZ4hov2Nht9Z9vhKKSIaB/gI4M4w62KeAO6Mte4lYOq20FxrlqqOibhHmeWbvNC9ZfDX1mLae391aN6limO/gwgvAPJbWeAZuSDingdwXTBw7/0IsyaA/Fkh+KqOkD+YNfHej1QKD+y7iVlOhgLvFqFfNJvNGyuBJ+KDAF8MDd0tgS8y64OlgSdJMsysL4cG7SOHkyQZLhTee7+d2R2rAVy/S+Jd7/32ouBHAP4gNNRGQyTHc/84NhqNywZp5rvjjnnvt21aABFeCQ+RLwAf2hQ8s7sv9OCLk6AHNgQvIrvbfzKCD76g/O6cu7lf/iER/aQGgy448pExZmhdegAPhR9sObFWH1gT3lp7DaA/5bkIgJhZPgsNmz02novj+KqeApj1ubwXWe4kdyeznAgNvTpE/HQmvKqOMeuFogTUVQSRno+iaLRLAJF7uIgL9O4ubgL8aWgB7S44mNX+35YpICUiAvS9sBLkq1WzT+NFffl6AuoiApi6NT37h6sWkBIRZGkQ8YtLgyji6e1mBYTqCEBPG2Naz+0BWQgtoGoRgCzEsd9hAN1X5BfnFZASUfrSAFQNsyZ1FJASUVpHiLinDJG8U2cBZYogkrcNs5waBAGdstbeU9zdqpw0gPwwSAI6VUxHyFlDpOcHUUBBIuYNs14aZAE5RVwyzPr3/0EAEY0TyfGNjBWQvwZ +CTSbehfAH29mrID8bET0+0EUkAd8WYDOmqJ3ecsG30yr9wqRfm6Y+a1BEFDEjHfHvWmY9ck6CygHvBVr8Xhtb4ZE5HZA3y8DvBNA1TjnrmXWf+sioMwZX5V/VHXMGGMMoKdDCxCRvRWBdzKzdHEO+EisilbPyopHYqp6S9UCAsz4iojI7hUDAtyXVQgIDd6KnOoaWNkbI6FaPSuZGyMArsi7MZoloB4zviI/Nhr3X95jltwTRQmoIfgisy5ai+me67OI7fE4nrqjrqfK1t0eby0FPRB6oGVlchL3rgnfrq19RKbVBdhV9IOSwJmfmJi4vi/4ThERitwyCxVAFqydshuCX5awhQ9KtmuIWd8IDZED/nXT77rvVVv6sHRKwjYi91poqP7Dr+Y6JJ1VSZIMA3wkPNy6bX+o8Bcm0sXMdwM8Fxo0A3xORPaWBp6uPXsmbxCRD0NDL0dOANhVCXy6iAjMcjbcrMt3RITKwdMVRdFo+y5yvkL4eWZ+zHt/ZVD4dEVRNGotpst+dZZZH8k86lqn2pIvT/eqrNfn2xuyqYPZ8mv7s8pfn/8Pybm4TIjanscAAAAASUVORK5CYII=") no-repeat center center;
+		    background-size: 64px 64px;
+		    position: absolute;
+		    height: 100%;
+		    width: 100%;
+		    opacity: .8;
+		    filter: alpha(opacity=80);
+		    transition: all 0.2s ease-out;
+		}
+
+		.youtube .play:hover {
+		    opacity: 1;
+		    filter: alpha(opacity=100);
+		}
+*/
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">                
+                    <a data-scroll href="#">Start Bootstrap</a>
+                </li>
+                <li>
+                    <a data-scroll href="#fm1">Format Map 1 Grey</a>
+                </li>
+                <li>
+                    <a data-scroll href="#fm2">Format Map 2 Pale Dawn</a>
+                </li>
+                <li>
+                    <a data-scroll href="#video">Video</a>
+                </li>
+                <li>
+                    <a data-scroll href="#perf1">Performance Video</a>
+                </li>
+                <li>
+                    <a data-scroll href="#realvideo">Real Video</a>
+                </li>
+                <li>
+                    <a data-scroll href="#perf2">Performance Real Video</a>
+                </li>
+                <li>
+                    <a data-scroll href="#videoNew">Img Technique</a>
+                </li>
+                <li>
+                    <a data-scroll href="#perf3">Performance Img Technique</a>
+                </li>
+            </ul>
+            <div id="bodyClick"></div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content --> 
+        <div id="page-content-wrapper">
+			<header>				
+				<div  class="container-fluid row nb-side navbar-default navbar-transparent">                
+                        <div class="col-xs-9">
+                            <h1>Header E</h1>
+                        </div>
+                        <div class="col-xs-3">
+                                <nav class="navbar text-xs-center">    
+                                    <button  id="menu-toggle" type="button">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar bar1"></span>
+                                        <span class="icon-bar bar2"></span>
+                                        <span class="icon-bar bar3"></span>
+                                    </button>
+                                </nav>
+                    	</div>
+                  </div> <!-- nb-side -->
+
+				  	<div class="parallax">
+	          			<img src="img/220291.jpg" class="img-fluid"/>
+	                    <div class="container-fluid text-xs-center">
+	                        <div class="content">
+	                            <h1  >PROVA CREAZIONE MENU'</h1>
+	                            <h5 >Release di Bootstrap 4 alfa 4</h5>
+	                        </div>
+			                <a href="#fm1" data-scroll  class="scroll-arrow hidden-xs hidden-sm">
+        				        <i class="fa fa-angle-down"></i> </a>               
+	                    </div>
+					</div>
+				
+ 			</header>	
+             
+            <div class="container-fluid">
+                <div id="fm1" class="row sec_content">
+                	<h1>Format Map 1 Grey</h1> 					
+                	<div  class="map">
+                    	<div id="contactUsMap" class="big-map"></div>
+                	</div>                	
+            	</div>
+			
+
+            	<div id="fm2" class="row sec_content">
+                	<h1>Format Map 2 Pale Dawn</h1>
+ 					<!-- <div class="section-contact-3 contact-container" id="contact"> -->
+                	<div  class="map1">
+                    	<div id="contactUsMap1" class="big-map"></div>
+                	</div>
+                	<!-- </div> -->
+            	</div>
+			
+			<!-- Video Start -->
+
+				<section id="video">
+	                <!-- <div class="text-area"> -->
+	                <div class="container text-area">
+	                    <div class="row">
+	                        <div class="title" id="animationTest">
+	                            <h2 class="text-xs-center" >About My Video</h2>
+	                            <div class="separator-container">
+	                                <div class="separator line-separator">∎</div>
+	                            </div>
+	                            <p class="text-xs-center">
+	                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?	
+	                            </p>
+	                        </div>
+	                    </div>
+	                </div>
+
+					<div class="container">
+	                    <div class="row">
+	                        <div class="col-md-10 offset-md-1">
+	                            <div class="row">
+	                                <div class="col-md-4">
+										<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/8J4mWbpzZvs" frameborder="0" allowfullscreen></iframe>	
+ 										-->
+	                                    <div class="card add-animation animation-2 ">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/8J4mWbpzZvs/0.jpg" />
+	                                    </div>
+										<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/HkfQmEZpxQg" frameborder="0" allowfullscreen></iframe>
+ 										-->
+	                                    <div class="card add-animation animation-4">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/HkfQmEZpxQg/0.jpg" />
+	                                    </div>
+	                                </div>
+
+	                                <div class="col-md-4">
+										<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/tpYm7ApfX90" frameborder="0" allowfullscreen></iframe>  -->
+	                                    <div class="card add-animation animation-1">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/tpYm7ApfX90/0.jpg"/>
+	                                    </div>
+										<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/bhSB8EEnCAM" frameborder="0" allowfullscreen></iframe>
+ 										-->
+	                                    <div class="card add-animation animation-3">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/bhSB8EEnCAM/0.jpg"/>
+	                                    </div>
+										<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/3_E7vC2VcRY" frameborder="0" allowfullscreen></iframe> -->
+	                                    <div class="card add-animation animation-2">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/3_E7vC2VcRY/0.jpg"/>
+	                                    </div>
+	                                </div>
+
+	                                <div class="col-md-4">
+	                                	<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/t9ilBHkH9Io" frameborder="0" allowfullscreen></iframe> -->
+	                                    <div class="card add-animation animation-3">
+	                                        <img class="img-fluid" alt="..." src="http://img.youtube.com/vi/t9ilBHkH9Io/0.jpg"/>
+	                                    </div>
+										<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/VBmCJEehYtU" frameborder="0" allowfullscreen></iframe> -->
+	                                     <div class="card add-animation animation-1">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/VBmCJEehYtU/0.jpg"/>
+	                                    </div>
+	                                </div>
+
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+				</section>
+
+				<section id="perf1" class="container-fluid row">					
+					<div class="col-md-10 offset-md-1 text-xs-center">
+						<h1>Performances</h1>
+                		<img class="img-fluid m-x-auto d-block" alt="..." src="img/screencapture_onlyThumb.png"/>
+                    </div>
+				</section>		
+
+
+				<section id="realvideo">
+	                <!-- <div class="text-area"> -->
+	                <div class="container text-area">
+	                    <div class="row">
+	                        <div class="title" id="animationTest">
+	                            <h2 class="text-xs-center" >About My New Video</h2>
+	                            <div class="separator-container">
+	                                <div class="separator line-separator">∎</div>
+	                            </div>
+	                            <p class="text-xs-center">
+	                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?	
+	                            </p>
+	                        </div>
+	                    </div>
+	                </div>
+
+
+					<div class="container">
+	                    <div class="row">
+	                        <div class="col-md-10 offset-md-1">
+	                            <div class="row">
+	                                <div class="col-md-4">
+										<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/8J4mWbpzZvs" frameborder="0" allowfullscreen></iframe>	
+ 										-->
+	                                    <div class="card add-animation animation-2 ">
+		                                    <div class="embed-responsive embed-responsive-16by9">
+												<iframe src="https://www.youtube.com/embed/8J4mWbpzZvs" 
+												allowfullscreen></iframe>					
+											</div>
+	                                    </div>
+
+
+										<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/HkfQmEZpxQg" frameborder="0" allowfullscreen></iframe>
+ 										-->
+	                                    <div class="card add-animation animation-4">
+	                                            <div class="embed-responsive embed-responsive-16by9">
+												<iframe src="https://www.youtube.com/embed/HkfQmEZpxQg" 
+												allowfullscreen></iframe>					
+											</div>
+	                                    </div>
+	                                </div>
+
+	                                <div class="col-md-4">
+										<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/tpYm7ApfX90" frameborder="0" allowfullscreen></iframe>  -->
+	                                    <div class="card add-animation animation-1">
+	                                            <div class="embed-responsive embed-responsive-16by9">
+												<iframe src="https://www.youtube.com/embed/tpYm7ApfX90" 
+												allowfullscreen></iframe>					
+											</div>
+	                                    </div>
+										<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/bhSB8EEnCAM" frameborder="0" allowfullscreen></iframe>
+ 										-->
+	                                    <div class="card add-animation animation-3">
+	                                            <div class="embed-responsive embed-responsive-16by9">
+												<iframe src="https://www.youtube.com/embed/bhSB8EEnCAM" 
+												allowfullscreen></iframe>					
+											</div>
+	                                    </div>
+										<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/3_E7vC2VcRY" frameborder="0" allowfullscreen></iframe> -->
+	                                    <div class="card add-animation animation-2">
+	                                            <div class="embed-responsive embed-responsive-16by9">
+												<iframe src="https://www.youtube.com/embed/3_E7vC2VcRY" 
+												allowfullscreen></iframe>					
+											</div>
+	                                    </div>
+	                                </div>
+
+	                                <div class="col-md-4">
+	                                	<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/t9ilBHkH9Io" frameborder="0" allowfullscreen></iframe> -->
+	                                    <div class="card add-animation animation-3">
+	                                            <div class="embed-responsive embed-responsive-16by9">
+												<iframe src="https://www.youtube.com/embed/t9ilBHkH9Io" 
+												allowfullscreen></iframe>					
+											</div>
+	                                    </div>
+										<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/VBmCJEehYtU" frameborder="0" allowfullscreen></iframe> -->
+	                                     <div class="card add-animation animation-1">
+	                                            <div class="embed-responsive embed-responsive-16by9">
+												<iframe src="https://www.youtube.com/embed/VBmCJEehYtU" 
+												allowfullscreen></iframe>					
+											</div>
+	                                    </div>
+	                                </div>
+
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+				</section>
+
+
+				<section id="perf2" class="container-fluid row">					
+                    <div class="col-md-10 offset-md-1 text-xs-center">
+                    	<h1>Performances</h1>	
+                		<img class="img-fluid m-x-auto d-block" alt="..." src="img/sc2-webpage_thumb_crop.png"/>
+                    </div>
+				</section>		
+
+
+				<!-- new video presentation -->
+
+				<section id="videoNew">
+	                <!-- <div class="text-area"> -->
+	                <div class="container text-area">
+	                    <div class="row">
+	                        <div class="title" id="animationTest">
+	                            <h2 class="text-xs-center" >About My Video</h2>
+	                            <div class="separator-container">
+	                                <div class="separator line-separator">∎</div>
+	                            </div>
+	                            <p class="text-xs-center">
+	                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?	
+	                            </p>
+	                        </div>
+	                    </div>
+	                </div>
+
+					<div class="container">
+	                    <div class="row">
+	                        <div class="col-md-10 offset-md-1">
+	                            <div class="row">
+	                                <div class="col-md-4">
+	                                    <div id="8J4mWbpzZvs" class="youtube card add-animation animation-2">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/8J4mWbpzZvs/sddefault.jpg" />
+	                                    </div>
+
+	                                    <div id="HkfQmEZpxQg" class="youtube card add-animation animation-4">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/HkfQmEZpxQg/sddefault.jpg" />
+	                                    </div>
+	                                </div>
+
+	                                <div class="col-md-4">
+	                                    <div id="tpYm7ApfX90" class="youtube card add-animation animation-1">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/tpYm7ApfX90/mqdefault.jpg"/>
+	                                    </div>
+	                                    <div id="bhSB8EEnCAM" class="youtube card add-animation animation-3">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/bhSB8EEnCAM/sddefault.jpg"/>
+	                                    </div>										
+	                                    <div id="3_E7vC2VcRY" class="youtube card add-animation animation-2">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/3_E7vC2VcRY/sddefault.jpg"/>
+	                                    </div>
+	                                </div>
+
+	                                <div class="col-md-4">
+	                                    <div id="t9ilBHkH9Io" class="youtube card add-animation animation-3">
+	                                        <img class="img-fluid" alt="..." src="http://img.youtube.com/vi/t9ilBHkH9Io/sddefault.jpg"/>
+	                                    </div>
+	                                     <div id="VBmCJEehYtU" class="youtube card add-animation animation-1">
+	                                        <img class="img-fluid"  alt="..." src="http://img.youtube.com/vi/VBmCJEehYtU/sddefault.jpg"/>
+	                                    </div>
+	                                </div>
+
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+				</section>
+
+
+				<section id="perf3" class="container-fluid row">					
+                    <div class="col-md-10 offset-md-1 text-xs-center">
+                    	<h1>Performances</h1>	
+                		<img class="img-fluid m-x-auto d-block" alt="..." src="img/tecn_load.jpg"/>
+                    </div>
+				</section>		
+
+
+			<!-- Video End -->
+ 
+        </div>        <!-- /#page-content-wrapper -->
+
+    </div>     <!-- /#wrapper -->
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+
+ 	<script type="text/javascript" src="js/jquery.waypoints.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+
+
+	<script src="js/tether.min.js"></script>
+
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+	<script src="js/bootstrap.min.js"></script>
+    
+	<script src="js/smooth-scroll.min.js"></script>
+
+   <!--  script for google maps   -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+	    $("#menu-toggle").click(function(e) {
+	        e.preventDefault();
+	        $("#wrapper").toggleClass("toggled");
+
+	        if ($("#wrapper").hasClass( "toggled")) {	    
+	            $( ".nb-side .col-xs-9" ).removeClass( "col-xs-9" ).addClass( "col-xs-6" );
+	        }
+	        else {
+	            $( ".nb-side .col-xs-6" ).removeClass( "col-xs-6" ).addClass( "col-xs-9" );	            
+	        }
+	    });
+
+	    $("#bodyClick").click(function(e) {
+	        e.preventDefault();
+	        $("#wrapper").toggleClass("toggled");
+	        if ($("#wrapper").hasClass( "toggled")) {	    
+	            $( ".nb-side .col-xs-9" ).removeClass( "col-xs-9" ).addClass( "col-xs-6" );
+	        }
+	        else {
+	            $( ".nb-side .col-xs-6" ).removeClass( "col-xs-6" ).addClass( "col-xs-9" );	            
+	        }
+	    });
+
+	    // document ready
+
+	    $(document).ready(function(){
+
+	    	var window_width = $(window).width();
+	    	var window_height = $(window).height();
+
+	    	var transparent = true;
+
+			// initAnimationsCheck Init
+
+			$('[class*="add-animation"]').each(function(){
+           		offset_diff = 30;
+           		// if($(this).hasClass('title')){offset_diff = 110;}
+           
+           		var waypoints = $(this).waypoint(function(direction) {
+                	if(direction == 'down'){
+                        $(this.element).addClass('animate');    
+                   	} else {
+                       $(this.element).removeClass('animate');
+                   	}
+                	}, {
+                  	offset: window_height - offset_diff
+           		});
+        	});
+
+			// initAnimationsCheck End
+
+			$(window).on('scroll',function(){
+	   			if(window_width > 980){
+
+	   				no_of_elements = 0;
+	        		$('.parallax').each(function() {
+		        	    var $elem = $(this);
+		        	    
+		        	    if(isElementInViewport($elem)){
+		                  var parent_top = $elem.offset().top;          
+		                  var window_bottom = $(window).scrollTop();
+		                  var $image = $elem.find('img')
+		                              	  
+		            	  oVal = ((window_bottom - parent_top) / 1.5);
+		                  $image.css('transform','translate3d(0px, ' + oVal + 'px, 0px)');    
+		        	    }
+	            	});
+				} // end if parallax 
+
+
+				var topscroll = $(document).scrollTop();	
+				// checkScrollForTransparentNavbar();    
+				if( topscroll > 560 ) {
+		            if(transparent) {
+	                    transparent = false;                    
+	                    $('.nb-side').removeClass('navbar-transparent');
+	                } 	             	
+	            } else {
+	        		if( !transparent ) {
+	            		transparent = true;            		
+	            		$('.nb-side').addClass('navbar-transparent');
+	        		}
+	        	}
+
+   		 }); //end scroll function
+
+
+	    smoothScroll.init({
+		    selector: '[data-scroll]', // Selector for links (must be a class, ID, data attribute, or element tag)
+		    //selectorHeader: null, // Selector for fixed headers (must be a valid CSS selector) [optional]
+		    speed: 500, // Integer. How fast to complete the scroll in milliseconds
+		    easing: 'easeInBack', // Easing pattern to use
+		    offset: 150, // Integer. How far to offset the scrolling anchor location in pixels
+		    //callback: function ( anchor, toggle ) {} // Function to run after scrolling
+		});
+
+		// --------------- Map Init -----------------------
+		
+        	var myLatlng = new google.maps.LatLng(46.0619, 13.2378);
+        
+	        var mapOptions = {
+	          zoom: 14,
+	          center: myLatlng,
+	          scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+	          disableDefaultUI: true,
+	          styles: [{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"on"},{"gamma":"1.82"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"gamma":"1.96"},{"lightness":"-9"}]},{"featureType":"administrative","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"visibility":"on"},{"lightness":"25"},{"gamma":"1.00"},{"saturation":"-100"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"hue":"#ffaa00"},{"saturation":"-43"},{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"simplified"},{"hue":"#ffaa00"},{"saturation":"-70"}]},{"featureType":"road.highway.controlled_access","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"visibility":"on"},{"saturation":"-100"},{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"saturation":"-100"},{"lightness":"40"},{"visibility":"off"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"gamma":"0.80"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"off"}]}]
+	        };
+
+
+			// https://snazzymaps.com/explore
+	        var mapOptions1 =  {  zoom: 10,
+	          center: myLatlng,
+	          scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+	          disableDefaultUI: true,
+	          styles: [{"featureType": "administrative",
+        				"elementType": "all",
+        				"stylers": [ {"visibility": "on" }, {"lightness": 33 } ] },
+    					{ "featureType": "landscape","elementType": "all","stylers": [ {"color": "#f2e5d4" } ] },
+    					{ "featureType": "poi.park", "elementType": "geometry",  "stylers": [ { "color": "#c5dac6" } ]},
+    					{  "featureType": "poi.park", "elementType": "labels","stylers": [ { "visibility": "on"   },
+            			{  "lightness": 20 }] }, { "featureType": "road", "elementType": "all", "stylers": [
+            			{  "lightness": 20 } ] }, {"featureType": "road.highway","elementType": "geometry", "stylers": [
+            			{  "color": "#c5c6c6"  } ] }, {  "featureType": "road.arterial", "elementType": "geometry",
+        				"stylers": [ {  "color": "#e4d7c6"} ]}, {"featureType": "road.local", "elementType": "geometry",
+        				"stylers": [ {  "color": "#fbfaf7" } ]}, {"featureType": "water","elementType": "all", "stylers": [
+            			{ "visibility": "on" }, { "color": "#acbcc9" }]}]
+            		};	
+
+
+
+
+        	var map = new google.maps.Map(document.getElementById("contactUsMap"), mapOptions); 
+			var map = new google.maps.Map(document.getElementById("contactUsMap1"), mapOptions1); 
+
+
+	        var marker = new google.maps.Marker({
+	            position: myLatlng,
+	            title:"Here I am!"
+	        });
+        
+	        // To add the marker to the map, call setMap();
+	        marker.setMap(map);
+    	
+			// --------------- Map End -----------------------
+
+			// ------------------ YouTube Solution 
+			$('.youtube').each(function() {
+			
+	    		this.onclick = function() {
+            		// Create an iFrame with autoplay set to true
+            		var iframe = document.createElement("iframe");
+            		// var iframe_url = "https://www.youtube.com/embed/" + this.id + "?autoplay=1&autohide=1";
+            		var iframe_url = "https://www.youtube.com/embed/" + this.id;
+            		// if (this.getAttribute("data-params")) iframe_url+='&'+this.getAttribute("data-params");
+            		iframe.setAttribute("src",iframe_url);
+            		iframe.setAttribute("frameborder",'0');
+            		iframe.setAttribute("allowfullscreen",true);
+            		iframe.setAttribute("width",$(this).width());
+            		iframe.setAttribute("height",$(this).height());
+
+            		// Replace the YouTube thumbnail with YouTube Player
+            		this.parentNode.replaceChild(iframe, this);
+        		}	
+
+			});
+				
+
+		});
+
+		function isElementInViewport(elem) {
+		    var $elem = $(elem);
+
+		    // Get the scroll position of the page.
+		    var scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html');
+		    var viewportTop = $(scrollElem).scrollTop();
+		    var viewportBottom = viewportTop + $(window).height();
+
+		    // Get the position of the element on the page.
+		    var elemTop = Math.round( $elem.offset().top );
+		    var elemBottom = elemTop + $elem.height();
+
+		    return ((elemTop < viewportBottom) && (elemBottom > viewportTop));
+		}
+
+    </script>
+
+</body>
+
+	<!-- resource -->
+	<!-- https://www.sitepoint.com/faster-youtube-embeds-javascript/ -->
+
+</html>
